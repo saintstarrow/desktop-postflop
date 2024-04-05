@@ -7,6 +7,7 @@ mod bunching;
 mod range;
 mod solver;
 mod tree;
+mod setting;
 use crate::bunching::*;
 use crate::range::*;
 use crate::solver::*;

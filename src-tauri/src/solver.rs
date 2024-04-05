@@ -1,4 +1,5 @@
 use crate::range::*;
+use crate::setting;
 use postflop_solver::*;
 use rayon::ThreadPool;
 use serde::Serialize;
@@ -110,6 +111,9 @@ pub fn game_init(
         river,
     };
 
+    let forbid_continual_raise=setting::read_bool("forbid_continual_raise");
+    let big_bet_size_ratio=setting::read_float("big_bet_size_ratio");
+    let forbid_separate_allin_raise=setting::read_bool("forbid_separate_allin_raise");
     let tree_config = TreeConfig {
         initial_state: state,
         starting_pot,
@@ -139,6 +143,9 @@ pub fn game_init(
         add_allin_threshold,
         force_allin_threshold,
         merging_threshold,
+        forbid_continual_raise,
+        big_bet_size_ratio,
+        forbid_separate_allin_raise,
     };
 
     let mut action_tree = ActionTree::new(tree_config).unwrap();

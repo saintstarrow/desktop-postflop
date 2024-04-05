@@ -1,3 +1,4 @@
+use crate::setting;
 use postflop_solver::*;
 use std::sync::Mutex;
 
@@ -115,6 +116,9 @@ pub fn tree_new(
         _ => panic!("Invalid board length"),
     };
 
+    let forbid_continual_raise=setting::read_bool("forbid_continual_raise");
+    let big_bet_size_ratio=setting::read_float("big_bet_size_ratio");
+    let forbid_separate_allin_raise=setting::read_bool("forbid_separate_allin_raise");
     let config = TreeConfig {
         initial_state,
         starting_pot,
@@ -144,6 +148,9 @@ pub fn tree_new(
         add_allin_threshold,
         force_allin_threshold,
         merging_threshold,
+        forbid_continual_raise,
+        big_bet_size_ratio,
+        forbid_separate_allin_raise
     };
 
     let mut tree = ActionTree::new(config).unwrap();
