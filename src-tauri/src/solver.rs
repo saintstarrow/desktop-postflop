@@ -109,6 +109,7 @@ pub fn game_init(
         flop: board[..3].try_into().unwrap(),
         turn,
         river,
+        ..Default::default()
     };
 
     let forbid_continual_raise=setting::read_bool("forbid_continual_raise");

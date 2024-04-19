@@ -686,7 +686,7 @@ const resumeSolver = async () => {
     exploitabilityUpdated = false;
 
     // compute exploitability for each iteration, this is for showing the progress precisely and testing solving senarios
-    if (currentIteration.value % 1 === 0) {
+    if (currentIteration.value % 10 === 0) {
       exploitability.value = Math.max(await invokes.gameExploitability(), 0);
       exploitabilityUpdated = true;
     }
