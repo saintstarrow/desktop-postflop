@@ -1,2 +1,2 @@
 forbid_continual_raise=true
-big_bet_size_ratio=1.0
+big_bet_threshold=1.0

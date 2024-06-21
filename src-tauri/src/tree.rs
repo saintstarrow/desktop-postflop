@@ -117,7 +117,7 @@ pub fn tree_new(
     };
 
     let forbid_continual_raise=setting::read_bool("forbid_continual_raise");
-    let big_bet_size_ratio=setting::read_float("big_bet_size_ratio");
+    let big_bet_threshold=setting::read_float("big_bet_threshold");
     let forbid_separate_allin_raise=setting::read_bool("forbid_separate_allin_raise");
     let config = TreeConfig {
         initial_state,
@@ -149,7 +149,7 @@ pub fn tree_new(
         force_allin_threshold,
         merging_threshold,
         forbid_continual_raise,
-        big_bet_size_ratio,
+        big_bet_threshold,
         forbid_separate_allin_raise
     };
 
