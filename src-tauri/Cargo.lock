@@ -1389,6 +1389,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
+name = "holdem-hand-evaluator"
+version = "0.1.0"
+dependencies = [
+ "holdem-hand-evaluator-assets",
+]
+
+[[package]]
+name = "holdem-hand-evaluator-assets"
+version = "0.1.0"
+
+[[package]]
 name = "html5ever"
 version = "0.25.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1579,12 +1590,6 @@ dependencies = [
  "hashbrown 0.14.1",
  "serde",
 ]
-
-[[package]]
-name = "indoc"
-version = "2.0.5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b248f5224d1d606005e02c97f5aa4e88eeb230488bcc03bc9ca4d7991399f2b5"
 
 [[package]]
 name = "infer"
@@ -2515,12 +2520,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "portable-atomic"
-version = "1.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7170ef9988bc169ba16dd36a7fa041e5c4cbeb6a35b76d4c03daded371eae7c0"
-
-[[package]]
 name = "postflop-solver"
 version = "0.1.0"
 dependencies = [
@@ -2528,9 +2527,11 @@ dependencies = [
  "bincode",
  "chrono",
  "colored",
+ "config",
+ "holdem-hand-evaluator",
  "jsonrpsee",
+ "lazy_static",
  "once_cell",
- "pyo3",
  "random_choice",
  "rayon",
  "regex",
@@ -2600,64 +2601,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3d433d9f1a3e8c1263d9456598b16fec66f4acc9a74dacffd35c7bb09b3a1328"
 dependencies = [
  "unicode-ident",
-]
-
-[[package]]
-name = "pyo3"
-version = "0.21.0"
-source = "git+https://github.com/pyo3/pyo3#cff4aa3cc81aa14cfee3fa45c0faea191f38be7e"
-dependencies = [
- "cfg-if",
- "indoc",
- "libc",
- "memoffset",
- "parking_lot",
- "portable-atomic",
- "pyo3-build-config",
- "pyo3-ffi",
- "pyo3-macros",
- "unindent",
-]
-
-[[package]]
-name = "pyo3-build-config"
-version = "0.21.0"
-source = "git+https://github.com/pyo3/pyo3#cff4aa3cc81aa14cfee3fa45c0faea191f38be7e"
-dependencies = [
- "once_cell",
- "target-lexicon",
-]
-
-[[package]]
-name = "pyo3-ffi"
-version = "0.21.0"
-source = "git+https://github.com/pyo3/pyo3#cff4aa3cc81aa14cfee3fa45c0faea191f38be7e"
-dependencies = [
- "libc",
- "pyo3-build-config",
-]
-
-[[package]]
-name = "pyo3-macros"
-version = "0.21.0"
-source = "git+https://github.com/pyo3/pyo3#cff4aa3cc81aa14cfee3fa45c0faea191f38be7e"
-dependencies = [
- "proc-macro2",
- "pyo3-macros-backend",
- "quote",
- "syn 2.0.37",
-]
-
-[[package]]
-name = "pyo3-macros-backend"
-version = "0.21.0"
-source = "git+https://github.com/pyo3/pyo3#cff4aa3cc81aa14cfee3fa45c0faea191f38be7e"
-dependencies = [
- "heck 0.4.1",
- "proc-macro2",
- "pyo3-build-config",
- "quote",
- "syn 2.0.37",
 ]
 
 [[package]]
@@ -4053,12 +3996,6 @@ name = "unicode-segmentation"
 version = "1.10.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1dd624098567895118886609431a7c3b8f516e41d30e0643f03d94592a147e36"
-
-[[package]]
-name = "unindent"
-version = "0.2.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c7de7d73e1754487cb58364ee906a499937a0dfabd86bcb980fa99ec8c8fa2ce"
 
 [[package]]
 name = "url"

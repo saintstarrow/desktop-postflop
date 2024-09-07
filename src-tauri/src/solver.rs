@@ -1,5 +1,5 @@
 use crate::range::*;
-use crate::setting;
+use crate::config::CONFIG_FILE;
 use postflop_solver::*;
 use rayon::ThreadPool;
 use serde::Serialize;
@@ -112,32 +112,31 @@ pub fn game_init(
         ..Default::default()
     };
 
-    let forbid_continual_raise=setting::read_bool("forbid_continual_raise");
-    let big_bet_threshold=setting::read_float("big_bet_threshold");
-    let forbid_separate_allin_raise=setting::read_bool("forbid_separate_allin_raise");
+    let forbid_continual_raise=unsafe{CONFIG_FILE.read_or("forbid_continual_raise",false)};
+    
     let tree_config = TreeConfig {
         initial_state: state,
         starting_pot,
         effective_stack,
         rake_rate,
         rake_cap,
-        flop_bet_sizes: [
+        flop_bet_options: [
             BetSizeOptions::try_from((oop_flop_bet.as_str(), oop_flop_raise.as_str())).unwrap(),
             BetSizeOptions::try_from((ip_flop_bet.as_str(), ip_flop_raise.as_str())).unwrap(),
         ],
-        turn_bet_sizes: [
+        turn_bet_options: [
             BetSizeOptions::try_from((oop_turn_bet.as_str(), oop_turn_raise.as_str())).unwrap(),
             BetSizeOptions::try_from((ip_turn_bet.as_str(), ip_turn_raise.as_str())).unwrap(),
         ],
-        river_bet_sizes: [
+        river_bet_options: [
             BetSizeOptions::try_from((oop_river_bet.as_str(), oop_river_raise.as_str())).unwrap(),
             BetSizeOptions::try_from((ip_river_bet.as_str(), ip_river_raise.as_str())).unwrap(),
         ],
-        turn_donk_sizes: match donk_option {
+        turn_donk_options: match donk_option {
             false => None,
             true => DonkSizeOptions::try_from(oop_turn_donk.as_str()).ok(),
         },
-        river_donk_sizes: match donk_option {
+        river_donk_options: match donk_option {
             false => None,
             true => DonkSizeOptions::try_from(oop_river_donk.as_str()).ok(),
         },
@@ -145,8 +144,7 @@ pub fn game_init(
         force_allin_threshold,
         merging_threshold,
         forbid_continual_raise,
-        big_bet_threshold,
-        forbid_separate_allin_raise,
+        ..Default::default()
     };
 
     let mut action_tree = ActionTree::new(tree_config).unwrap();
