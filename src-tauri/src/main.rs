@@ -16,10 +16,10 @@ use postflop_solver::*;
 use rayon::{ThreadPool, ThreadPoolBuilder};
 use std::sync::Mutex;
 use sysinfo::{System, SystemExt};
-// use once_cell::sync::Lazy;
+use once_cell::sync::Lazy;
 
-// pub static mut CONFIG_FILE: Lazy<ConfigFile> =
-//     Lazy::new(|| ConfigFile::new("Settings.toml".to_string()));
+pub static mut CONFIG_FILE: Lazy<ConfigFile> =
+    Lazy::new(|| ConfigFile::new("Settings.toml".to_string()));
 
 fn main() {
     tauri::Builder::default()

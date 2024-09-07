@@ -682,6 +682,7 @@ dependencies = [
  "config",
  "lazy_static",
  "notify",
+ "once_cell",
  "postflop-solver",
  "rayon",
  "serde",

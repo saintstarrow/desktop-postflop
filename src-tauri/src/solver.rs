@@ -1,5 +1,5 @@
 use crate::range::*;
-use crate::config::CONFIG_FILE;
+use super::CONFIG_FILE;
 use postflop_solver::*;
 use rayon::ThreadPool;
 use serde::Serialize;

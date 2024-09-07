@@ -1,4 +1,4 @@
-use crate::config::CONFIG_FILE;
+use super::CONFIG_FILE;
 use postflop_solver::*;
 use std::sync::Mutex;
 

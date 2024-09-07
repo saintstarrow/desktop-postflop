@@ -24,7 +24,7 @@ sysinfo = "0.29.10"
 config = "0.14.*"
 notify="6.1.*"
 lazy_static = "1.4.*"
-# once_cell = "1.18.0"
+once_cell = "1.18.0"
 
 [features]
 # by default Tauri runs in production mode
